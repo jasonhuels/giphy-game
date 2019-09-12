@@ -19,7 +19,14 @@ $(document).ready(function() {
       const body = JSON.parse(response);
       console.log(body);
 
-      defWords = body[0].meta.syns[0];
+      //defWords = body[0].meta.syns[0];
+      for(let i=0; i<body.length; i++) {
+        for(let j=0; j<body[i].meta.syns.length; j++) {
+          for(let k=0; k<body[i].meta.syns[j].length; k++) {
+            defWords.push(body[i].meta.syns[j][k]);
+          }
+        }
+      }
       console.log(defWords);
 
     }, function(error) {
